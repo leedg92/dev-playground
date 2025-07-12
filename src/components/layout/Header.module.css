@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 60px;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #404040;
+  color: #ffffff;
+}
+
+.menuBtn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.menuBtn:hover {
+  background-color: #404040;
+}
+
+.logo {
+  margin-left: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  color: #646cff;
+} 

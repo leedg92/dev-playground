@@ -1,0 +1,30 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.layout.sidebarClosed {
+  --sidebar-width: 60px;
+}
+
+.layout:not(.sidebarClosed) {
+  --sidebar-width: 250px;
+}
+
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-left: 0;
+  }
+} 
