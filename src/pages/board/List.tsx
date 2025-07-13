@@ -12,10 +12,12 @@ const List: React.FC = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [rowsPerPage] = useState(10);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentSearch, setCurrentSearch] = useState('');
 
   const navigate = useNavigate();
 
-  const fetchBoardList = async (pageNum: number) => {
+  const fetchBoardList = async (pageNum: number, search?: string) => {
     setLoading(true);
     setError('');
     
@@ -23,6 +25,7 @@ const List: React.FC = () => {
       const response: BoardListResponse = await boardService.getBoardList({
         pageNum,
         rowsPerPage,
+        search: search || null,
       });
       
       setBoardList(response.result);
@@ -37,8 +40,25 @@ const List: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchBoardList(currentPage);
-  }, [currentPage]);
+    fetchBoardList(currentPage, currentSearch);
+  }, [currentPage, currentSearch]);
+
+  const handleSearch = () => {
+    setCurrentSearch(searchTerm);
+    setCurrentPage(1); // 검색 시 첫 페이지로 이동
+  };
+
+  const handleSearchReset = () => {
+    setSearchTerm('');
+    setCurrentSearch('');
+    setCurrentPage(1);
+  };
+
+  const handleSearchKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -117,6 +137,32 @@ const List: React.FC = () => {
           글쓰기
         </button>
       </div>
+
+      <div className="search-container">
+        <div className="search-box">
+          <input
+            type="text"
+            placeholder="제목, 내용, 작성자로 검색..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyPress={handleSearchKeyPress}
+            className="search-input"
+          />
+          <button onClick={handleSearch} className="search-btn">
+            검색
+          </button>
+          {currentSearch && (
+            <button onClick={handleSearchReset} className="reset-btn">
+              초기화
+            </button>
+          )}
+        </div>
+        {currentSearch && (
+          <div className="search-info">
+            '<span className="search-keyword">{currentSearch}</span>' 검색 결과
+          </div>
+        )}
+      </div>
       
       <div className="board-info">
         총 {totalCount}개의 게시글
@@ -137,7 +183,9 @@ const List: React.FC = () => {
             </div>
             
             {boardList.length === 0 ? (
-              <div className="no-data">등록된 게시글이 없습니다.</div>
+              <div className="no-data">
+                {currentSearch ? '검색 결과가 없습니다.' : '등록된 게시글이 없습니다.'}
+              </div>
             ) : (
               boardList.map((board) => (
                 <div

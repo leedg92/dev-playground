@@ -12,6 +12,7 @@ export type ListType = {
 export type BoardListRequest = {
   pageNum: number;
   rowsPerPage: number;
+  search?: string | null;
 };
 
 // 게시판 목록 조회 응답 타입
