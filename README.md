@@ -1,12 +1,114 @@
-# React + Vite
+# 개인 개발 실험실
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> 내가 만들고 싶은 것들을 모아둔 통합 플랫폼 사이트
 
-Currently, two official plugins are available:
+## 📋 프로젝트 개요
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+일상에서 필요한 도구들과 흥미로운 아이디어들을 하나의 플랫폼에서 관리하고 개발하는 통합 서비스입니다. 새로운 프로젝트 아이디어가 생길 때마다 메뉴를 추가하여 점진적으로 확장할 수 있도록 설계되었습니다.
 
-## Expanding the ESLint configuration
+## 🏗️ 전체 아키텍처
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+통합 플랫폼 (React 기반)
+├── 메인 대시보드
+├── 공통 컴포넌트 (헤더, 사이드바, 네비게이션)
+├── 인증 시스템 (JWT)
+└── 서브 프로젝트들
+    ├── 📝 게시판 (React + Express + PostgreSQL)
+    ├── 📰 뉴스 학습기 (예정)
+    ├── 🔖 북마크 관리 (예정)
+    └── 기타 프로젝트들...
+```
+
+## 🛠️ 기술 스택
+
+### 프론트엔드 (공통)
+
+- **React** - 메인 프레임워크
+- **React Router** - 라우팅
+- **Axios** - HTTP 클라이언트
+- **CSS Modules** - 스타일링
+
+### 백엔드 (프로젝트별 상이)
+
+- **Express.js** - Node.js 웹 프레임워크
+- **Spring Boot** - Java 웹 프레임워크 (일부 프로젝트)
+
+### 데이터베이스
+
+- **PostgreSQL** - 메인 데이터베이스
+
+### 개발/배포
+
+- **Vite** - 빌드 도구
+- **AWS EC2** - 서버 호스팅 (예정)
+- **미니PC** - 로컬 개발/테스트 서버
+
+## 📁 프로젝트 구조
+
+```
+project-platform/
+├── README.md
+├── package.json
+├── public/
+├── src/
+│   ├── components/           # 공통 컴포넌트
+│   │   ├── Layout/
+│   │   ├── Navigation/
+│   │   └── common/
+│   ├── pages/               # 메인 페이지들
+│   │   ├── Dashboard.jsx
+│   │   └── ProjectList.jsx
+│   ├── services/            # API 서비스
+│   ├── utils/               # 유틸리티 함수
+│   └── App.jsx
+├── projects/                # 개별 프로젝트들
+│   ├── board/              # 게시판 프로젝트
+│   │   ├── README.md
+│   │   ├── frontend/
+│   │   └── backend/
+│   ├── news-learning/      # 뉴스 학습기 (예정)
+│   └── [etc projects]]/    # 추가할 프로젝트들..
+└── docs/                   # 문서
+```
+
+## 🚀 현재 진행 상황
+
+### ✅ 완료
+
+- [x] 플랫폼 기본 구조 설계
+- [x] 기술 스택 결정
+
+### 🔄 진행 중
+
+- [ ] React 기반 메인 플랫폼 구축
+- [ ] 게시판 프로젝트 개발
+
+### 📋 예정
+
+- [ ] 뉴스 기반 용어/개념 학습 서비스
+- [ ] 개인 대시보드
+- [ ] AWS 배포 및 도메인 연결
+
+## 🎯 개발 철학
+
+1. **점진적 확장**: 작은 단위로 시작해서 지속적으로 개선
+2. **실용성 우선**: 실제로 사용할 수 있는 도구들 개발
+3. **기술 실험**: 새로운 기술을 안전하게 시도해볼 수 있는 환경
+4. **일관된 UX**: 모든 프로젝트에서 통일된 사용자 경험
+
+## 💡 설계 원칙
+
+- **프론트엔드 통일**: 모든 프로젝트에서 React 사용으로 일관된 UX 제공
+- **백엔드 유연성**: 프로젝트 특성에 맞는 백엔드 기술 선택 (Node.js, Java, Python 등)
+- **독립성**: 각 프로젝트는 독립적으로 개발/배포 가능
+- **확장성**: 새로운 아이디어를 쉽게 추가할 수 있는 구조
+
+## 📚 개별 프로젝트 문서
+
+- [📝 게시판](https://claude.ai/chat/projects/board/README.md)
+- [📰 뉴스 학습기](https://claude.ai/chat/projects/news-learning/README.md) (예정)
+
+## 🤔 향후 아이디어
+
+- 엘라스틱서치 기반 캐글 데이터 자동 색인

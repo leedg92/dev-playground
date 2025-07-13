@@ -6,18 +6,22 @@ import './List.css';
 
 const List: React.FC = () => {
   const [boardList, setBoardList] = useState<ListType[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string>('');
+
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentRowsPerPage, setCurrentRowsPerPage] = useState(10);
+  const [currentSearch, setCurrentSearch] = useState('');
+
   const [totalPages, setTotalPages] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
-  const [rowsPerPage] = useState(10);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string>('');
+  
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentSearch, setCurrentSearch] = useState('');
 
   const navigate = useNavigate();
 
-  const fetchBoardList = async (pageNum: number, search?: string) => {
+  const fetchBoardList = async (pageNum: number, rowsPerPage: number, search?: string) => {
     setLoading(true);
     setError('');
     
@@ -40,8 +44,8 @@ const List: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchBoardList(currentPage, currentSearch);
-  }, [currentPage, currentSearch]);
+    fetchBoardList(currentPage, currentRowsPerPage, currentSearch);
+  }, [currentPage, currentRowsPerPage, currentSearch]);
 
   const handleSearch = () => {
     setCurrentSearch(searchTerm);
@@ -129,6 +133,13 @@ const List: React.FC = () => {
     return pages;
   };
 
+  const handleRowsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const viewCnt = parseInt(e.target.value);
+    setCurrentRowsPerPage(viewCnt);
+    setCurrentPage(1);
+    fetchBoardList(1, viewCnt, currentSearch);
+  }
+
   return (
     <div className="board-list-container">
       <div className="board-header">
@@ -165,8 +176,15 @@ const List: React.FC = () => {
       </div>
       
       <div className="board-info">
-        총 {totalCount}개의 게시글
+        <span className="board-count">총 {totalCount}개의 게시글</span>
+        <select className="view-count-select" onChange={handleRowsPerPageChange}>
+          <option value="10">10개</option>
+          <option value="20">20개</option>
+          <option value="50">50개</option>
+          <option value="100">100개</option> 
+        </select>
       </div>
+      
 
       {loading && <div className="loading">로딩 중...</div>}
       

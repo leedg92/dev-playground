@@ -108,9 +108,45 @@
 }
 
 .board-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
   color: #cccccc;
   font-size: 14px;
+}
+
+.board-count {
+  color: #cccccc;
+  font-size: 14px;
+}
+
+.view-count-select {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: 1px solid #444444;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.view-count-select:hover {
+  background-color: #333333;
+  border-color: #555555;
+}
+
+.view-count-select:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.view-count-select option {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  padding: 8px;
 }
 
 .loading {
@@ -176,7 +212,7 @@
 }
 
 .col-writer {
-  width: 120px;
+  width: 160px;
   padding: 12px;
   text-align: center;
   border-right: 1px solid #444444;
