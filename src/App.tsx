@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import Layout from './components/Layout/Layout';
-import BoardList from './pages/board/List';
-import Home from './pages/Home';
 import Layout from './components/layout/Layout';
+import BoardList from './pages/board/List';
+import BoardDetail from './pages/board/Detail';
+import BoardWrite from './pages/board/Write';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/board" element={<BoardList />} />
+            <Route path="/board/write" element={<BoardWrite />} />
+            <Route path="/board/:id" element={<BoardDetail />} />
           </Routes>
         </div>
       </Layout>

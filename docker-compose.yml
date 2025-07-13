@@ -4,7 +4,7 @@ services:
   react-app:
     build: .
     ports:
-      - "8080:8080"
+      - "${VITE_PORT}:${VITE_PORT}"
     volumes:
       - .:/app
       - /app/node_modules  # node_modules는 컨테이너 내부 사용

@@ -1,0 +1,242 @@
+.board-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.board-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.board-header button {
+  background-color: #666666;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.board-header button:hover {
+  background-color: #555555;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px;
+  color: #cccccc;
+  font-size: 18px;
+}
+
+.error-container {
+  text-align: center;
+  padding: 60px;
+  background-color: #1a1a1a;
+}
+
+.error-message {
+  color: #ff6b6b;
+  background-color: #2d1b1b;
+  border: 1px solid #4a2626;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.board-content {
+  background: #2d2d2d;
+  border: 1px solid #444444;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.board-info {
+  padding: 20px;
+  border-bottom: 1px solid #444444;
+  background-color: #333333;
+}
+
+.board-info h2 {
+  margin: 0 0 10px 0;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.board-meta {
+  display: flex;
+  gap: 20px;
+  color: #cccccc;
+  font-size: 14px;
+}
+
+.board-body {
+  padding: 20px;
+  min-height: 200px;
+  background-color: #2d2d2d;
+}
+
+.content {
+  line-height: 1.6;
+  color: #ffffff;
+  white-space: pre-wrap;
+  font-size: 16px;
+}
+
+.board-actions {
+  padding: 20px;
+  border-top: 1px solid #444444;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: #333333;
+}
+
+.board-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.board-actions button:first-child {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.board-actions button:first-child:hover {
+  background-color: #357abd;
+}
+
+.board-actions button.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.board-actions button.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.edit-form {
+  background: #2d2d2d;
+  border: 1px solid #444444;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #555555;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #3a3a3a;
+  color: #ffffff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.form-group input:disabled,
+.form-group textarea:disabled {
+  background-color: #2a2a2a;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 200px;
+  font-family: inherit;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.form-buttons button[type="button"] {
+  background-color: #666666;
+  color: white;
+}
+
+.form-buttons button[type="button"]:hover {
+  background-color: #555555;
+}
+
+.form-buttons button[type="submit"] {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.form-buttons button[type="submit"]:hover {
+  background-color: #357abd;
+}
+
+@media (max-width: 768px) {
+  .board-detail-container {
+    padding: 10px;
+  }
+  
+  .board-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .board-meta {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .board-actions {
+    flex-direction: column;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+  }
+} 
